@@ -10,7 +10,7 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            bgdc
+
         //asdf
 
 
