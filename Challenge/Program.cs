@@ -13,20 +13,22 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            int[][] distM = {
-                new int[] { 0, 1, 1, 2, 3, 3 },
-                new int[] { 1, 0, 1, 2, 3, 3 },
-                new int[] { 1, 1, 0, 1, 2, 2 },
-                new int[] { 2, 2, 1, 0, 1, 1 },
-                new int[] { 3, 3, 2, 1, 0, 1 },
-                new int[] { 3, 3, 2, 1, 1, 0 }
+            int[][] adjM = {
+                new int[] { 0, 1, 1, 0, 0, 0 },
+                new int[] { 1, 0, 1, 0, 0, 0 },
+                new int[] { 1, 1, 0, 1, 0, 0 },
+                new int[] { 0, 0, 1, 0, 1, 1 },
+                new int[] { 0, 0, 0, 1, 0, 1 },
+                new int[] { 0, 0, 0, 1, 1, 0 }
             };
 
             int k = 2;
 
+            var distM = DistanceMatrix.compute(adjM);
+
             Clustering clusters = new Clustering(distM, k);
 
-            clusters.toConsole();
+            Output.toConsole(clusters.getClusters(), 0.420);
 
             Console.ReadKey();
         }

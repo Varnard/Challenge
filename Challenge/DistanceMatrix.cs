@@ -50,7 +50,7 @@ namespace Challenge
                     //Compute shortest distance between i and j
                     else
                     {
-                        Console.WriteLine(i + " " + j);
+                        //Console.WriteLine(i + " " + j);
                         dist[j][i] = dist[i][j] = dijkstra(cost, i, j);
                     }
                 }
