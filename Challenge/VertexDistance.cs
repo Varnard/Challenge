@@ -18,7 +18,7 @@ namespace Challenge
 
         public double Distance(double[] x, double[] y)
         {
-            return (double)distanceMatrix[(int)x[0]-1][(int)y[0]-1];
+            return (double)distanceMatrix[(int)x[0]][(int)y[0]];
         }
     }
 }

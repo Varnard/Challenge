@@ -15,31 +15,45 @@ namespace Challenge
         {
             var input = new Input();
 
-            input.read("TEST5020.txt");
+            Console.WriteLine("Reading File...");
+            input.read("TEST7834.txt");
+            Console.Clear();
 
             int m = input.getM();
+            int n = input.getN();
             int[][] adjM = input.getAdjMatrix();
-            
 
-            //int[][] adjM = {
-            //    new int[] { 0, 1, 1, 0, 0, 0 },
-            //    new int[] { 1, 0, 1, 0, 0, 0 },
-            //    new int[] { 1, 1, 0, 1, 0, 0 },
-            //    new int[] { 0, 0, 1, 0, 1, 1 },
-            //    new int[] { 0, 0, 0, 1, 0, 1 },
-            //    new int[] { 0, 0, 0, 1, 1, 0 }
-            //};
-
-            int k = 19;
-            //int m = 7;
-
+            Console.WriteLine("Computing Distance Matrix...");
             var distM = DistanceMatrix.compute(adjM);
+            Console.Clear();
 
-            Clustering clusters = new Clustering(distM, k);
+            double bestScore=0;
+            List<List<int>> bestClusters = new List<List<int>>();
 
-            var score = ModularityFunction.Rating(m, adjM, clusters.getClusters());
+            int t = 20;
 
-            Output.toConsole(clusters.getClusters(), score);
+            
+            for (int k = 1; k <= n; k++)
+            {
+                for (int i = 0; i < t; i++)
+                {
+                    var clusters = new Clustering(distM, k).getClusters();
+
+                    var score = ModularityFunction.Rating(m, adjM, clusters);
+
+                    if (score>bestScore)
+                    {
+                        bestScore = score;
+                        bestClusters = clusters;
+                    }
+                    Console.Clear();
+                    Console.Write("Clustering: "+Math.Round(((double)(k-1) * t + i)*100 / ((double)n * t ),1)+ "%");
+                }
+
+            }
+
+            Console.Clear();
+            Output.toConsole(bestClusters, bestScore);
 
             Console.ReadKey();
         }
