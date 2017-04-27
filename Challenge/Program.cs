@@ -13,17 +13,25 @@ namespace Challenge
     {
         static void Main(string[] args)
         {
-            int[][] adjM = {
-                new int[] { 0, 1, 1, 0, 0, 0 },
-                new int[] { 1, 0, 1, 0, 0, 0 },
-                new int[] { 1, 1, 0, 1, 0, 0 },
-                new int[] { 0, 0, 1, 0, 1, 1 },
-                new int[] { 0, 0, 0, 1, 0, 1 },
-                new int[] { 0, 0, 0, 1, 1, 0 }
-            };
+            var input = new Input();
 
-            int k = 2;
-            int m = 7;
+            input.read("TEST5020.txt");
+
+            int m = input.getM();
+            int[][] adjM = input.getAdjMatrix();
+            
+
+            //int[][] adjM = {
+            //    new int[] { 0, 1, 1, 0, 0, 0 },
+            //    new int[] { 1, 0, 1, 0, 0, 0 },
+            //    new int[] { 1, 1, 0, 1, 0, 0 },
+            //    new int[] { 0, 0, 1, 0, 1, 1 },
+            //    new int[] { 0, 0, 0, 1, 0, 1 },
+            //    new int[] { 0, 0, 0, 1, 1, 0 }
+            //};
+
+            int k = 19;
+            //int m = 7;
 
             var distM = DistanceMatrix.compute(adjM);
 
