@@ -11,9 +11,6 @@ namespace Challenge
         static void Main(string[] args)
         {
 
-        //asdf
-
-
         }
     }
 }
