@@ -49,11 +49,12 @@ namespace Challenge
                     }
                     //Compute shortest distance between i and j
                     else
-                    {
-                        //Console.WriteLine(i + " " + j);
+                    {                       
                         dist[j][i] = dist[i][j] = dijkstra(cost, i, j);
-                    }
+                    }                  
+              
                 }
+               
             }
 
             return dist;
@@ -80,14 +81,31 @@ namespace Challenge
             selected[source] = 1;
             start = source;
 
+            int loop=0;
+            int oldDist=0;
+
             //While the target has not been selected, keep on searching
             while (selected[target] == 0)
             {
                 int minDistance = maxValue;
                 int minPosition = 0;
 
+                //break the loop if dist doesnt change in 20 interations
+                if (oldDist==dist[target])
+                {
+                    loop += 1;
+                }
+                else
+                {
+                    loop = 0;               
+                }
+                if (loop == 20)break;
+                oldDist = dist[target];
+
+
                 for (int i = 1; i < size; i++)
                 {
+                    
                     int d = dist[start] + cost[start][i];
 
                     if (selected[i] == 0 && d < dist[i])

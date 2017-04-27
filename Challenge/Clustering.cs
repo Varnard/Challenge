@@ -29,13 +29,14 @@ namespace Challenge
             for (int i = 0; i < n; i++)
             {
                 double[] vertex = new double[1];
-                vertex[0] = i + 1;
+                vertex[0] = i;
                 vertices[i] = vertex;
             }
 
             KMeans kmeans = new KMeans(k)
             {
-                Distance = distance
+                Distance = distance,
+                MaxIterations = 1000
             };
 
             var clusters = kmeans.Learn(vertices);
@@ -51,6 +52,8 @@ namespace Challenge
                 }
                 results.Add(cluster);
             }
+
+            results.RemoveAll(c => c.Count == 0);
 
             return results;
         }

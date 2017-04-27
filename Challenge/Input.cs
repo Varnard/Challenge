@@ -9,12 +9,13 @@ namespace Challenge
     class Input
     {
         int m;
+        int n;
         int[][] adjM;
 
 
         public void read(string filename)
         {           
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Varnard\Documents\Visual Studio 2015\Projects\Challenge\Challenge\"+filename);
+            string[] lines = System.IO.File.ReadAllLines(@"D:\Varn\Documents\Visual Studio 2015\Projects\Challenge\Challenge\" + filename);
 
             int[][] array = lines.Where(line => !String.IsNullOrWhiteSpace(line)) // Use this to filter blank lines.
                 .Select(line => line.Split((string[])null, StringSplitOptions.RemoveEmptyEntries))
@@ -23,7 +24,7 @@ namespace Challenge
                 .ToArray();
 
             m = array[0][0];
-            int n = array[1][0];
+            n = array[1][0];
             adjM = new int[n][];
 
             int i, j;
@@ -36,7 +37,6 @@ namespace Challenge
 
                 for (int l=i-1; l<j-1; l++)
                 {
-                    //var test = array[4][]
                     adjM[k][array[3][l] - 1] = 1;
                 }
             }
@@ -49,13 +49,16 @@ namespace Challenge
                 adjM[n - 1][array[3][l] - 1] = 1;
             }
 
-
-
         }
 
         public int getM()
         {
             return m;
+        }
+
+        public int getN()
+        {
+            return n;
         }
 
         public int[][] getAdjMatrix() {
