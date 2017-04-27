@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="DistanceMatrix.cs" />
     <Compile Include="Clustering.cs" />
+    <Compile Include="ModularityFunction.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VertexDistance.cs" />

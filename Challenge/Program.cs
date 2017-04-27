@@ -23,12 +23,15 @@ namespace Challenge
             };
 
             int k = 2;
+            int m = 7;
 
             var distM = DistanceMatrix.compute(adjM);
 
             Clustering clusters = new Clustering(distM, k);
 
-            Output.toConsole(clusters.getClusters(), 0.420);
+            var score = ModularityFunction.Rating(m, adjM, clusters.getClusters());
+
+            Output.toConsole(clusters.getClusters(), score);
 
             Console.ReadKey();
         }
